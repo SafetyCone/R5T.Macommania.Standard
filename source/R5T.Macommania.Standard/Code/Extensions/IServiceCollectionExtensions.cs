@@ -46,6 +46,17 @@ namespace R5T.Macommania.Standard
         /// <summary>
         /// Adds the <see cref="IExecutableFileDirectoryPathProvider"/> service.
         /// </summary>
+        public static IServiceCollection AddExecutableFileDirectoryPathProvider<TExecutableFileDirectoryPathProvider>(this IServiceCollection services)
+            where TExecutableFileDirectoryPathProvider: IExecutableFileDirectoryPathProvider
+        {
+            services.AddExecutableFileDirectoryPathProvider();
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="IExecutableFileDirectoryPathProvider"/> service.
+        /// </summary>
         public static ServiceAction<IExecutableFileDirectoryPathProvider> AddExecutableFileDirectoryPathProviderAction(this IServiceCollection services)
         {
             var serviceAction = new ServiceAction<IExecutableFileDirectoryPathProvider>(() => services.AddExecutableFileDirectoryPathProvider());
